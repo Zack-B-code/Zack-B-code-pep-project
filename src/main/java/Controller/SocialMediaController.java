@@ -121,14 +121,16 @@ public class SocialMediaController {
     }
 
     private void getAllMessagesbyUserHandler(Context ctx) throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        Message message = mapper.readValue(ctx.body(), Message.class);
         int message_id = Integer.parseInt(ctx.pathParam("message_id"));
         int posted_by = Integer.parseInt(ctx.pathParam("posted_by"));
         List<Message> usermessages = messageService.RetrieveAllMessageForUser(posted_by, message_id);
-        if (usermessages == null)
+        if (usermessages != null)
         {
-            ctx.json("");
+            ctx.json(mapper.writeValueAsString(usermessages));
         }else{
-            ctx.json(usermessages);
+            ctx.status(200);
         }        
     }
 }

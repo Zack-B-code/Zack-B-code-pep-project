@@ -91,13 +91,10 @@ public class MessageService {
         {
             return null;
         }
-        if (messageDAO.RetrieveMessageByMessageId(message_id).getPosted_by() == 1)
-        {
-            return messageDAO.RetrieveAllMessageForUser(posted_by);
-        }
-        else 
-        {
-            return null;
-        }
+        // if (messageDAO.RetrieveMessageByMessageId(message_id).getPosted_by() == 1)
+        // {
+        //     return messageDAO.RetrieveAllMessageForUser(posted_by);
+        // }
+        return messageDAO.RetrieveAllMessageForUser(posted_by);
     }
 }

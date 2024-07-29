@@ -125,7 +125,7 @@ public class MessageDAO {
         List<Message> messages = new ArrayList<>();
         try {
             //Write SQL logic here
-            String sql = "select * from message where posted_by=?;";
+            String sql = "select * from message where posted_by = ?;";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
             preparedStatement.setInt(1, posted_by);
